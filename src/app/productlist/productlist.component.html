@@ -1,0 +1,29 @@
+<div>
+
+  <div *ngIf="productList.length>0; else noProductsFound">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Title</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prod of productList">
+          <td>{{prod.id}}</td>
+          <td>{{prod.title}}</td>
+          <td>{{prod.price | currency: '$ ' :'symbol' : '1.2-2' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <ng-template #noProductsFound>
+    <div>
+      <b>No results found</b>
+    </div>
+  </ng-template>
+
+</div>

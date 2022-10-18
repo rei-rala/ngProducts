@@ -1,0 +1,17 @@
+<div *ngIf="product">
+  <div>
+    <div>
+      <h3>
+        {{product.title}}
+      </h3>
+      <button (click)="toggleImage()">Show image</button>
+    </div>
+    <aside *ngIf="showingImage">
+      <img [src]="product.image" alt={{product.title}}>
+    </aside>
+    <p>{{product.description}}</p>
+    <span>
+      {{product.price}}
+    </span>
+  </div>
+</div>
