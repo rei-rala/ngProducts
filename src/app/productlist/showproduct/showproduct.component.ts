@@ -1,20 +1,17 @@
 import { Component, Input } from '@angular/core';
-import type { Product } from '../productlist.component';
-
+import type { IProduct } from '../productlist.component';
 
 @Component({
+  selector: 'show-product',
   templateUrl: './showproduct.component.html',
-  selector: 'showproduct',
+  styleUrls: ['./showproduct.component.scss',]
 })
 export class ShowProduct {
-  @Input() private _product!: Product;
+  @Input() showPreview!: boolean;
+  @Input() product!: IProduct;
   showingImage = false;
 
-  get product()  {
-    return this._product
-  }
-
   toggleImage() {
-    this.showingImage = !this.showingImage
+    this.showingImage = !this.showingImage;
   }
 }

@@ -1,17 +1,20 @@
-<div *ngIf="product">
+<div *ngIf="product" class="product--showing">
   <div>
     <div>
-      <h3>
-        {{product.title}}
-      </h3>
-      <button (click)="toggleImage()">Show image</button>
+      <div class="titlePlacement">
+        <h3>
+          {{product.title}}
+        </h3>
+        <!--   <button (click)="onClose()">X</button> -->
+      </div>
+      <button (click)="toggleImage()"> {{showingImage ? "Hide" : "Show"}} image</button>
     </div>
     <aside *ngIf="showingImage">
-      <img [src]="product.image" alt={{product.title}}>
+      <img [src]="product.image" alt={{product.title}} [width]="200" [height]="200">
     </aside>
     <p>{{product.description}}</p>
     <span>
-      {{product.price}}
+      {{product.price | currency: '$ ' :'symbol' : '1.2-2'}}
     </span>
   </div>
 </div>

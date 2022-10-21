@@ -1,23 +1,23 @@
 [
   {
     "id": 1,
-    "title": "CD-ROM",
-    "description": "It is a Compact-Disc, kinda old nowadays",
-    "image": "/assets/products/cdrom.jpg",
+    "title": "DVD-ROM",
+    "description": "It is a Digital-Versatile-Disc Read Only Memory",
+    "image": "/assets/images/products/dvd.png",
     "price": 49.99
   },
   {
     "id": 2,
     "title": "Blu-ray",
-    "description": "Bluray, a CD sucessor that did not last long",
-    "image": "/assets/products/bluray.jpg",
+    "description": "Bluray, a DVD sucessor that did not last long",
+    "image": "/assets/images/products/bluray.png",
     "price": 249.99
   },
   {
     "id": 3,
     "title": "Pen drive",
     "description": "Fast, rewritrable, USB portable, popular",
-    "image": "/assets/products/pendrive.jpg",
+    "image": "/assets/images/products/pendrive.png",
     "price": 149.99
   }
 ]

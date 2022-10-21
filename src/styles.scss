@@ -8,6 +8,11 @@ body {
   color: var($default-color);
 }
 
+
+button {
+  cursor: pointer;
+}
+
 table {
   border-collapse: collapse;
 
@@ -26,9 +31,10 @@ table {
 
   tbody tr {
     background-color: $accent;
+    text-align: center;
   }
 
   tbody tr:nth-child(2n+1) {
-    background-color: darken($accent, 5);
+    background-color: darken($accent, 10);
   }
 }
