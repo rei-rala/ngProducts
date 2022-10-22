@@ -1,3 +1,8 @@
+<div *ngIf="loading; else endLoading">
+  <b>LOADING PRODUCTS</b>
+</div>
+
+<ng-template #endLoading>
 <div>
   <h2>Showing products</h2>
 
@@ -39,3 +44,5 @@
   </ng-template>
 
 </div>
+
+</ng-template>

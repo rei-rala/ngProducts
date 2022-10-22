@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductListService } from './productlist.service';
+import { ThisReceiver } from '@angular/compiler';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ProductListService } from './product-list.service';
 
 export interface IProduct {
   id: number;
@@ -11,10 +13,10 @@ export interface IProduct {
 
 @Component({
   selector: 'product-list',
-  templateUrl: './productlist.component.html',
-  styleUrls: ['./productlist.component.scss'],
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.scss'],
 })
-export class ProductList implements OnInit {
+export class ProductList implements OnInit, OnDestroy {
   constructor(private plService: ProductListService) {}
   private _inputFilter = '';
 
@@ -23,6 +25,9 @@ export class ProductList implements OnInit {
 
   productPreview?: IProduct;
   showPreview = true;
+  loading = true;
+
+  sub!: Subscription;
 
   get productList() {
     return this._productList;
@@ -64,18 +69,23 @@ export class ProductList implements OnInit {
     this.setProductPreview(undefined);
   }
 
-  ngOnInit(): void {
-    this.plService.getProducts().subscribe(
-      (response) => {
-        this._productList = response;
-      },
-      (error) => {
-        console.warn(`Error getting products:\n${error}`);
-        this._productList = [];
-      },
-      () => {
-        this.filteredProducts = this.productList;
-      }
-    );
+  ngOnInit() {
+    new Promise((res) => {
+      console.log('Retrieving data');
+      return setTimeout(res, 2000);
+    }).then(() => {
+      this.sub = this.plService.getProducts().subscribe({
+        next: (products) => (this._productList = products),
+        error: console.log,
+        complete: () => {
+          this.filteredProducts = this.productList;
+          this.loading = false;
+        },
+      });
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
