@@ -1,0 +1,43 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+
+  background-color: var(--accent);
+
+  > * {
+    display: grid;
+    place-items: center;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 0.5rem;
+
+    margin: 0;
+    padding: 0;
+
+    text-transform: capitalize;
+
+    li a {
+      display: block;
+      min-width: 3rem;
+      text-align: center;
+    }
+  }
+}
+
+.logo {
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

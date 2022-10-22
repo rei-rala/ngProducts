@@ -1,13 +1,27 @@
-$default-color: #190b28;
-$default-bkg: #efd0ca;
-$accent: #B2D8E6;
-
-
-body {
-  background-color: var($default-bkg);
-  color: var($default-color);
+:root {
+  --default-color: hsl(269, 57%, 10%);
+  --default-bkg: hsla(10, 54%, 86%, 0.5);
+  --accent: hsl(196, 51%, 80%);
 }
 
+$accent: hsl(196, 51%, 80%);
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+}
+
+body {
+  background-color: var(--default-bkg);
+  color: var(--default-color);
+}
+
+section {
+  padding: 0.5rem;
+}
 
 button {
   cursor: pointer;
@@ -30,11 +44,11 @@ table {
   }
 
   tbody tr {
-    background-color: $accent;
+    background-color: var(--accent);
     text-align: center;
   }
 
-  tbody tr:nth-child(2n+1) {
+  tbody tr:nth-child(2n + 1) {
     background-color: darken($accent, 10);
   }
 }

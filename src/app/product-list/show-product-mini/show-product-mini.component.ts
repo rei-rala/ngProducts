@@ -3,8 +3,8 @@ import type { IProduct } from '../product-list.component';
 
 @Component({
   selector: 'show-product',
-  templateUrl: './show-product.component.html',
-  styleUrls: ['./show-product.component.scss',]
+  templateUrl: './show-product-mini.component.html',
+  styleUrls: ['./show-product-mini.component.scss'],
 })
 export class ShowProduct {
   @Input() showPreview!: boolean;
