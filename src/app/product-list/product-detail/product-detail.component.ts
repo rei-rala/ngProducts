@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IProduct } from '../product-list.component';
 import { ProductListService } from '../product-list.service';
@@ -27,8 +27,13 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private plService: ProductListService
   ) {}
+
+  onBack(): void {
+    this.router.navigate(['/products']);
+  }
 
   ngOnInit(): void {
     let numberId = !isNaN(Number(this.productId)) && Number(this.productId);
