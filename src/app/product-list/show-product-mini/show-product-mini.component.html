@@ -7,7 +7,6 @@
         </h3>
         <!--   <button (click)="onClose()">X</button> -->
       </div>
-      <button (click)="toggleImage()"> {{showingImage ? "Hide" : "Show"}} image</button>
     </div>
     <aside *ngIf="showingImage">
       <img [src]="product.image" alt={{product.title}} [width]="200" [height]="200">
@@ -17,4 +16,6 @@
       {{product.price | currency: '$ ' :'symbol' : '1.2-2'}}
     </span>
   </div>
+
+  <a [routerLink]="['/products', product.id]">See details of #{{product.id}}</a>
 </div>

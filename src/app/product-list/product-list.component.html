@@ -1,52 +1,49 @@
-<section>
-  <div *ngIf="loading; else endLoading">
-    <b>LOADING PRODUCTS</b>
-  </div>
+<div *ngIf="loading; else endLoading">
+  <b>LOADING PRODUCTS</b>
+</div>
 
-  <ng-template #endLoading>
-    <div>
-      <h2>Showing products</h2>
+<ng-template #endLoading>
+  <div>
+    <h2>Showing products</h2>
 
-      <label>
-        Filter
-        <input type="text" [(ngModel)]="inputFilter" placeholder="Enter some text">
-      </label>
+    <label>
+      Filter
+      <input type="text" [(ngModel)]="inputFilter" placeholder="Enter some text">
+    </label>
 
-      <div *ngIf="filteredProducts.length>0; else noProductsFound">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">id</th>
-              <th scope="col">Title</th>
-              <th scope="col">Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let prod of filteredProducts" (click)="setProductPreview(prod)">
-              <td>{{prod.id}}</td>
-              <td>{{prod.title}}</td>
-              <td>{{prod.price | number : '1.2'}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <show-product *ngIf="productPreview" [product]="productPreview">
-      </show-product>
-
-
-      <ng-template #noProductsFound>
-        <div>
-          <b *ngIf="filteredProducts.length === productList.length; else filtered">Sorry, we coudn't find any
-            products</b>
-          <ng-template #filtered>
-            <b>No results found with filter '{{inputFilter}}'</b>
-          </ng-template>
-        </div>
-      </ng-template>
-
+    <div *ngIf="filteredProducts.length>0; else noProductsFound">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of filteredProducts" (click)="setProductPreview(prod)">
+            <td>{{prod.id}}</td>
+            <td>{{prod.title}}</td>
+            <td>{{prod.price | number : '1.2'}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-  </ng-template>
+    <show-product *ngIf="productPreview" [product]="productPreview">
+    </show-product>
 
-</section>
+
+    <ng-template #noProductsFound>
+      <div>
+        <b *ngIf="filteredProducts.length === productList.length; else filtered">Sorry, we coudn't find any
+          products</b>
+        <ng-template #filtered>
+          <b>No results found with filter '{{inputFilter}}'</b>
+        </ng-template>
+      </div>
+    </ng-template>
+
+  </div>
+
+</ng-template>

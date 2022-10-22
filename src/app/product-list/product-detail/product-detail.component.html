@@ -1,1 +1,50 @@
-<p>product-detail works!</p>
+<div class="product--showing" *ngIf="!error && product; else displayError">
+
+  <h2>Details of product #{{product.id}}</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">id</th>
+        <td>{{product.id}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Title</th>
+        <td>{{product.title}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Image</th>
+        <td>
+          <img [src]="product.image" [width]="200" [height]="200">
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Image location</th>
+        <td><a [href]="product.image">...{{product.image}}</a></td>
+      </tr>
+      <tr>
+        <th scope="row">Description</th>
+        <td>{{product.description}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Price</th>
+        <td> {{product.price | currency: '$ ' :'symbol' : '1.2-2'}} </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a routerLink="/products">Go back</a>
+</div>
+
+<ng-template #displayError>
+  <div *ngIf="error">
+    <h4>Error {{error.code}}</h4>
+    <p>{{error.message}}</p>
+  </div>
+</ng-template>

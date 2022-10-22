@@ -20,7 +20,13 @@ body {
 }
 
 section {
+  display: grid;
+  place-items: center;
   padding: 0.5rem;
+
+  > * {
+    margin: auto;
+  }
 }
 
 button {

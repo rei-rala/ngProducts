@@ -71,8 +71,7 @@ export class ProductList implements OnInit, OnDestroy {
 
   ngOnInit() {
     new Promise((res) => {
-      console.log('Retrieving data');
-      return setTimeout(res, 2000);
+      res(console.log('Retrieving data'));
     }).then(() => {
       this.sub = this.plService.getProducts().subscribe({
         next: (products) => (this._productList = products),
@@ -86,6 +85,6 @@ export class ProductList implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.sub?.unsubscribe();
   }
 }
