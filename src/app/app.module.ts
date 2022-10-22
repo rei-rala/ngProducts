@@ -11,6 +11,7 @@ import { ShowProduct } from './product-list/show-product-mini/show-product-mini.
 import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProductDetailGuard } from './product-list/product-detail/product-detail.guard';
 
 @NgModule({
   declarations: [
@@ -28,10 +29,13 @@ import { NavbarComponent } from './navbar/navbar.component';
     RouterModule.forRoot([
       { path: '', component: WelcomeComponent, pathMatch: 'full' },
       { path: 'products', component: ProductList, pathMatch: 'full' },
-      { path: 'products/:id', component: ProductDetailComponent },
+      {
+        path: 'products/:id',
+        canActivate: [ProductDetailGuard],
+        component: ProductDetailComponent,
+      },
       { path: '**', redirectTo: '', pathMatch: 'full' },
       { path: '', redirectTo: '', pathMatch: 'full' },
-
     ]),
     AppRoutingModule,
   ],
