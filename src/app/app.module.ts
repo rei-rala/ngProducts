@@ -6,38 +6,28 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { ProductList } from './product-list/product-list.component';
-import { ShowProduct } from './product-list/show-product-mini/show-product-mini.component';
-import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ProductDetailGuard } from './product-list/product-detail/product-detail.guard';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { ProductModule } from './product/product.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductList,
-    ShowProduct,
-    ProductDetailComponent,
-    WelcomeComponent,
     NavbarComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    AppRoutingModule,
     RouterModule.forRoot([
       { path: '', component: WelcomeComponent, pathMatch: 'full' },
-      { path: 'products', component: ProductList, pathMatch: 'full' },
-      {
-        path: 'products/:id',
-        canActivate: [ProductDetailGuard],
-        component: ProductDetailComponent,
-      },
       { path: '**', redirectTo: '', pathMatch: 'full' },
       { path: '', redirectTo: '', pathMatch: 'full' },
     ]),
-    AppRoutingModule,
+
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent],

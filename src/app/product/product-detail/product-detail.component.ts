@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IProduct } from '../product-list.component';
-import { ProductListService } from '../product-list.service';
+import { IProduct } from '../product-list/product-list.component';
+import { ProductListService } from '../product-list/product-list.service';
 
 @Component({
   templateUrl: './product-detail.component.html',
